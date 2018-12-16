@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as leaflet from 'leaflet';
 import { Map,Marker } from 'leaflet';
+import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ export class TrackgarbagetruckPage implements OnInit {
   mapg: Map;
   latitude:any;
   longitude:any;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,private alertCtrl:AlertController) {
     this.latitude=this.route.snapshot.params['latitude'];
     this.longitude=this.route.snapshot.params['longitude'];
 
@@ -29,12 +30,26 @@ export class TrackgarbagetruckPage implements OnInit {
       setView: true,
       maxZoom: 20,
     }).on('locationfound', e => {
-      let marker=leaflet.marker([this.latitude,this.longitude]);
+      let marker=leaflet.marker([this.latitude,this.longitude]).on('click',()=>
+      {
+          this.alert("Info","Your Location");
+      });;
       let markerGroup=leaflet.featureGroup();
       markerGroup.addLayer(marker);
       this.mapg.addLayer(markerGroup);
       }).on('locationerror', (err) => {
         alert(err);
     })
+  }
+  async alert(header:any,message:any)
+  {
+    const alert= await this.alertCtrl.create(
+      {
+       header:header,
+       message:message,
+       buttons:['OK'], 
+      }
+    );
+    alert.present();
   }
 }
