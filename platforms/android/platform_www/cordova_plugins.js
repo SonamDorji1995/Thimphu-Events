@@ -47,6 +47,37 @@ module.exports = [
     "clobbers": [
       "window.Keyboard"
     ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
+  },
+  {
+    "id": "cordova-plugin-datepicker.DatePicker",
+    "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+    "pluginId": "cordova-plugin-datepicker",
+    "clobbers": [
+      "datePicker"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -58,7 +89,10 @@ module.exports.metadata =
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-ionic-webview": "2.2.5",
-  "cordova-plugin-ionic-keyboard": "2.1.3"
+  "cordova-plugin-ionic-keyboard": "2.1.3",
+  "cordova-plugin-geolocation": "4.0.1",
+  "cordova-plugin-inappbrowser": "3.0.0",
+  "cordova-plugin-datepicker": "0.9.3"
 };
 // BOTTOM OF METADATA
 });

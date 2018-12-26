@@ -17,11 +17,14 @@ const routes: Routes = [
   { path: 'religionAdmin', loadChildren: './religion-admin/religion-admin.module#ReligionAdminPageModule' },
   { path: 'festivalAdmin', loadChildren: './festival-admin/festival-admin.module#FestivalAdminPageModule' },
   { path: 'entertainmentAdmin', loadChildren: './entertainment-admin/entertainment-admin.module#EntertainmentAdminPageModule' },
-  { path: 'trackcitybus/:latitude/:longitude', loadChildren: './trackcitybus/trackcitybus.module#TrackcitybusPageModule' },
-  { path: 'trackgarbagetruck/:latitude/:longitude', loadChildren: './trackgarbagetruck/trackgarbagetruck.module#TrackgarbagetruckPageModule' },
   { path: 'footballAdmin', loadChildren: './football-admin/football-admin.module#FootballAdminPageModule' },
   { path: 'footbalFullAdmin', loadChildren: './footbal-full-admin/footbal-full-admin.module#FootbalFullAdminPageModule' },
-  { path: 'salesAdmin', loadChildren: './sales-admin/sales-admin.module#SalesAdminPageModule' },
+  { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
+  { path: 'trackgarbagetruck/:latitude/:longitude', loadChildren: './trackgarbagetruck/trackgarbagetruck.module#TrackgarbagetruckPageModule' },
+  { path: 'trackcitybus/:latitude/:longitude', loadChildren: './trackcitybus/trackcitybus.module#TrackcitybusPageModule' },
+  { path: 'movieadmin', loadChildren: './movieadmin/movieadmin.module#MovieadminPageModule' },
+  { path: 'salesadmin', loadChildren: './salesadmin/salesadmin.module#SalesadminPageModule' },
+  { path: 'aboutus', loadChildren: './aboutus/aboutus.module#AboutusPageModule' },
 ];
 
 @NgModule({

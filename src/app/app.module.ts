@@ -7,13 +7,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { UploadpicService } from '../services/uploadpic/uploadpic.service';
-import { Geolocation } from '@ionic-native/geolocation/ngx'
 const config={
   apiKey: "AIzaSyA4Lp4OYSekcXStv6OYK3_Usua82Pojr_8",
     authDomain: "thimphu-events.firebaseapp.com",

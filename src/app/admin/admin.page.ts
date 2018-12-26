@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, MenuController } from '@ionic/angular';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { UploadpicService } from '../../services/uploadpic/uploadpic.service';
 import { Upload } from '../../models/upload/upload';
@@ -32,7 +32,8 @@ export class AdminPage implements OnInit {
     private altCtl : AlertController,
     private navCtl : NavController,
     private datePicker: DatePicker,
-    private uploadServ: UploadpicService
+    private uploadServ: UploadpicService,
+    private menu: MenuController,
   )
   {
     //for retriving the data
@@ -114,10 +115,15 @@ export class AdminPage implements OnInit {
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
-      date => 
+      date =>{
+        let dateArray=date.toString().split(' ');
+        this.startDate=dateArray[0]+" "+dateArray[1]+" "+dateArray[2]+" "+dateArray[3]
+        err => console.log('Error occurred while getting date: ', err)
+      }
+    
       //console.log('Got date: ', date),
-      this.startDate = date,
-      err => console.log('Error occurred while getting date: ', err)
+      
+      
     );
   }
   pickEndDate(){
@@ -127,13 +133,17 @@ export class AdminPage implements OnInit {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
       date => 
-      this.endDate = date,
-      err => console.log('Error occurred while getting date: ', err)
+      {
+        let dateArray=date.toString().split(' ');
+        this.endDate=dateArray[0]+" "+dateArray[1]+" "+dateArray[2]+" "+dateArray[3]
+        err => console.log('Error occurred while getting date: ', err)
+      }
+      
     );
   }
 
   movies(){
-    this.showmovies = true;
+    this.navCtl.navigateForward('/movieadmin');
   }
   football(){
     this.showmovies = false;
@@ -142,22 +152,32 @@ export class AdminPage implements OnInit {
     this.showmovies = false;
   }
   music(){
+    this.navCtl.navigateForward('/entertainmentAdmin');
     this.showmovies = false;
   }
   religion(){
     this.navCtl.navigateForward('/religionAdmin');
   }
+
+  goFootballAdmin(){
+    this.navCtl.navigateForward('/footballAdmin');
+  }
   nationalfest(){
     this.showmovies = false;
     this.navCtl.navigateForward('/festivalAdmin');
   }
-  special(){
+  specialSale(){
     this.showmovies = false;
+    this.navCtl.navigateForward('/salesadmin');
   }
   thromde(){
     this.showmovies = false;
   }
   others(){
     this.showmovies = false;
+  }
+
+  openMenu(){
+    this.menu.toggle('myMenu');
   }
 }

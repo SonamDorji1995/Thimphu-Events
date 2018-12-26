@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as leaflet from 'leaflet';
 import { Map,Marker} from 'leaflet';
-import { NavController } from '@ionic/angular';
+import { NavController,MenuController } from '@ionic/angular';
 import { Geolocation} from '@ionic-native/geolocation/ngx';
 @Component({
   selector: 'app-thromde',
@@ -11,9 +11,9 @@ import { Geolocation} from '@ionic-native/geolocation/ngx';
 export class ThromdePage implements OnInit {
   mapc: Map;
   mapg: Map;
-  trackCSelectColor: string = "secondary";
+  trackCSelectColor: string = "tertiary";
   scheCSelectColor: string = "medium";
-  trackGSelectColor: string = "secondary";
+  trackGSelectColor: string = "tertiary";
   scheGSelectColor: string = "medium";
   showTrackC_var: boolean = true;
   showScheC_var: boolean = false;
@@ -22,7 +22,9 @@ export class ThromdePage implements OnInit {
   stampResultStatus: boolean = false;
   latitude:any;
   longitude:any;
-  constructor(private navCtrl:NavController,private geolocation:Geolocation) {
+  constructor(private navCtrl:NavController,
+    private geolocation:Geolocation,
+    private menu: MenuController) {
     this.geolocation.watchPosition().subscribe(data=>
     {
       this.latitude=data.coords.latitude;
@@ -32,10 +34,12 @@ export class ThromdePage implements OnInit {
 
   ngOnInit() {
   }
-
+  openMenu(){
+    this.menu.toggle('myMenu');
+  }
   showTrackC()
   {
-    this.trackCSelectColor = "secondary";
+    this.trackCSelectColor = "tertiary";
     this.scheCSelectColor = "medium";
     this.showTrackC_var= true;
     this.showScheC_var = false;
@@ -45,7 +49,7 @@ export class ThromdePage implements OnInit {
   showScheC()
   {
     this.trackCSelectColor = "medium";
-    this.scheCSelectColor = "secondary";
+    this.scheCSelectColor = "tertiary";
     this.showTrackC_var = false;
     this.showScheC_var = true;
     this.stampResultStatus = true;
@@ -53,7 +57,7 @@ export class ThromdePage implements OnInit {
 
   showTrackG()
   {
-    this.trackGSelectColor = "secondary";
+    this.trackGSelectColor = "tertiary";
     this.scheGSelectColor = "medium";
     this.showTrackG_var= true;
     this.showScheG_var = false;
@@ -63,38 +67,10 @@ export class ThromdePage implements OnInit {
   showScheG()
   {
     this.trackGSelectColor = "medium";
-    this.scheGSelectColor = "secondary";
+    this.scheGSelectColor = "tertiary";
     this.showTrackG_var = false;
     this.showScheG_var = true;
     this.stampResultStatus = true;
-  }
-  loadMapC()
-  {
-    this.mapc=leaflet.map("mapc").setZoom(17,{animate:true,duration:0.5});//.panTo([this.latitude,this.longitude]);
-    leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.mapc);
-    this.mapc.locate({
-      setView: true,
-      maxZoom: 20,
-    }).on('locationfound', e => {
-      e.type.valueOf().toString();
-            
-      }).on('locationerror', (err) => {
-        alert(err);
-    })
-  }
-  loadMapG()
-  {
-    this.mapg=leaflet.map("mapg").setZoom(17,{animate:true,duration:0.5});//.panTo([this.latitude,this.longitude]);
-    leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.mapg);
-    this.mapg.locate({
-      setView: true,
-      maxZoom: 20,
-    }).on('locationfound', e => {
-      e.type.valueOf().toString();
-            
-      }).on('locationerror', (err) => {
-        alert(err);
-    })
   }
   goTrackCMap()
   {

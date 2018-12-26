@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Map } from 'leaflet';
 import * as leaflet from 'leaflet';
 import { ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
 import { AlertController } from '@ionic/angular';
+=======
+import { AlertController,MenuController } from '@ionic/angular';
+>>>>>>> da584cec42c1908df4427539730e248150892cce
 
 @Component({
   selector: 'app-trackcitybus',
@@ -13,7 +17,13 @@ export class TrackcitybusPage implements OnInit {
   mapc: Map;
   latitude:any;
   longitude:any;
+<<<<<<< HEAD
   constructor(private route: ActivatedRoute,private alertCtrl:AlertController) {
+=======
+  constructor(private route: ActivatedRoute,
+    private alertCtrl:AlertController,
+    private menu: MenuController) {
+>>>>>>> da584cec42c1908df4427539730e248150892cce
     this.latitude=this.route.snapshot.params['latitude'];
     this.longitude=this.route.snapshot.params['longitude'];
     console.log("lat and long="+this.latitude+" "+this.longitude);
@@ -22,6 +32,9 @@ export class TrackcitybusPage implements OnInit {
 
   ngOnInit() {
     this.loadMap();
+  }
+  openMenu(){
+    this.menu.toggle('myMenu');
   }
   loadMap()
   {
