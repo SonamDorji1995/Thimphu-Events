@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as leaflet from 'leaflet';
 import { Map,Marker } from 'leaflet';
-<<<<<<< HEAD
-import { AlertController } from '@ionic/angular';
-=======
 import { AlertController,MenuController } from '@ionic/angular';
->>>>>>> da584cec42c1908df4427539730e248150892cce
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,13 +13,9 @@ export class TrackgarbagetruckPage implements OnInit {
   mapg: Map;
   latitude:any;
   longitude:any;
-<<<<<<< HEAD
-  constructor(private route: ActivatedRoute,private alertCtrl:AlertController) {
-=======
   constructor(private route: ActivatedRoute,
     private alertCtrl:AlertController,
     private menu:MenuController) {
->>>>>>> da584cec42c1908df4427539730e248150892cce
     this.latitude=this.route.snapshot.params['latitude'];
     this.longitude=this.route.snapshot.params['longitude'];
 
@@ -65,8 +57,4 @@ export class TrackgarbagetruckPage implements OnInit {
     );
     alert.present();
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> da584cec42c1908df4427539730e248150892cce
